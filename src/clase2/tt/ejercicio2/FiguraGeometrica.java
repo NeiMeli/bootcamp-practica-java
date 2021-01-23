@@ -8,7 +8,7 @@ public abstract class FiguraGeometrica {
     // las clases hijas que no sobreescriban toString() van a usar este algoritmo
     @Override
     public String toString() {
-        return super.toString();
+        return "El área es " + area();
     }
 
     public static class FiguraGeometricaException extends RuntimeException {
