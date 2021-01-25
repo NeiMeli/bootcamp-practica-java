@@ -1,6 +1,7 @@
 package clase2.tt.ejercicio1;
 
-import com.sun.istack.internal.NotNull;
+
+import org.jetbrains.annotations.NotNull;
 
 public abstract class Password {
     private final String regex;

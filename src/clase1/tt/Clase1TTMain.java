@@ -1,30 +1,40 @@
 package clase1.tt;
 
+import common.IOUtil;
 import common.StringUtil;
+import menu.Menu;
+import menu.MenuItem;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static common.IOUtil.ensureIntInput;
+import static common.IOUtil.print;
 
 public class Clase1TTMain {
     public static void main(String[] args) {
-        print("\nOrdenando {4, 28, 132, 3, 61, 5}:");
-        radixSort(new int[]{4, 28, 132, 3, 61, 5});
-
-        print("\nOrdenando {3, 673, 106, 45, 2, 23}:");
-        radixSort(new int[]{3, 673, 106, 45, 2, 23});
-
-        print("\nOrdenando {892, 1002, 16, 5, 239, 12, 98, 115, 7}:");
-        radixSort(new int[]{892, 1002, 16, 5, 239, 12, 98, 115, 7});
+        runExercise();
     }
 
-    private static void print(String s) {
-        System.out.println(s);
+    private static void runExercise() {
+        print("Ingrese números enteros. Para finalizar la carga ingrese 0. Se ordenarán los números de forma tal" +
+                " que todos tendrán la misma cantidad de dígitos (agregando ceros) y se presenten de forma ascendente");
+        List<Integer> numbers = Collections.emptyList();
+        int intInput = ensureIntInput();
+        while (intInput != 0) {
+            if (numbers.isEmpty()) numbers = new ArrayList<>();
+            numbers.add(intInput);
+            intInput = ensureIntInput();
+        }
+        radixSort(numbers.stream().mapToInt(Integer::intValue).toArray());
     }
 
     private static void radixSort(int [] arr) {
-        for (String s : applyRadixSort(arr)) {
-            print(s);
-        }
+        print(String.format("Ordenando {%s}", Arrays.stream(arr)
+                .mapToObj(String::valueOf)
+                .collect(Collectors.joining(" - "))));
+        Arrays.stream(applyRadixSort(arr)).forEach(IOUtil::print);
     }
 
     public static String[] applyRadixSort(int[] arr) {
@@ -38,5 +48,9 @@ public class Clase1TTMain {
             result = StringUtil.mapToStringArray(stringArrayByDigitMap);
         }
         return result;
+    }
+
+    public static MenuItem buildMenu(@Nullable Menu menu) {
+        return MenuItem.create("Turno Tarde - Radix Sort", () -> Clase1TTMain.main(new String[]{}), false);
     }
 }

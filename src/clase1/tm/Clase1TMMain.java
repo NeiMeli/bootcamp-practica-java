@@ -1,13 +1,17 @@
 package clase1.tm;
 
+import common.IOUtil;
+import menu.Menu;
+import menu.MenuItem;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
 import java.util.stream.IntStream;
 
+import static common.IOUtil.ensureIntInput;
+import static common.IOUtil.print;
+
 public class Clase1TMMain {
-    public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         exercise1();
         exercise2();
@@ -20,15 +24,11 @@ public class Clase1TMMain {
         print("Ejercicio 1");
         print("Ingrese un número entero n. Mostraremos los primeros n números pares");
         int counter = ensureIntInput();
-        IntStream.range(1, Integer.MAX_VALUE).filter(Clase1TMMain::isEven).limit(counter).forEach(Clase1TMMain::print);
+        IntStream.range(1, Integer.MAX_VALUE).filter(Clase1TMMain::isEven).limit(counter).forEach(IOUtil::print);
     }
 
     public static boolean isEven(int i) {
         return areEvenDivisible(i, 2);
-    }
-
-    private static void print(Object i) {
-        System.out.println(i);
     }
 
     public static boolean areEvenDivisible(int n, int m) {
@@ -40,21 +40,9 @@ public class Clase1TMMain {
         print("Ingrese dos números n y m. Mostraremos los primeros n múltiplos de m");
         int n = ensureIntInput();
         int m = ensureIntInput();
-        IntStream.range(1, m).filter(candidate -> areEvenDivisible(m, candidate)).limit(n).forEach(Clase1TMMain::print);
+        IntStream.range(1, m).filter(candidate -> areEvenDivisible(m, candidate)).limit(n).forEach(IOUtil::print);
     }
-
-    private static int ensureIntInput() {
-        Optional<Integer> input = Optional.empty();
-        while(!input.isPresent()) {
-            try {
-                input = Optional.of(Integer.parseInt(scanner.nextLine()));
-            } catch (final Exception e) {
-                print("Por favor ingrese un número entero válido");
-            }
-        }
-        return input.get();
-    }
-
+    
     private static void exercise3() {
         print("Ejercicio 3");
         print("Ingrese un número. Mostraremos si es primo");
@@ -77,7 +65,7 @@ public class Clase1TMMain {
         print("Ejercicio 4");
         print("Ingrese un número. Mostraremos todos los números primos en ese rango");
         int n = ensureIntInput();
-        IntStream.range(1, n).filter(Clase1TMMain::isPrime).forEach(Clase1TMMain::print);
+        IntStream.range(1, n).filter(Clase1TMMain::isPrime).forEach(IOUtil::print);
     }
 
     private static void exercise5() {
@@ -86,7 +74,7 @@ public class Clase1TMMain {
         int n = ensureIntInput();
         int m = ensureIntInput();
         int d = ensureIntInput();
-        getFirstNIntegersThatHaveMTimesD(n, m, d).forEach(Clase1TMMain::print);
+        getFirstNIntegersThatHaveMTimesD(n, m, d).forEach(IOUtil::print);
     }
 
     public static List<Integer> getFirstNIntegersThatHaveMTimesD(int n, int m, int d) {
@@ -107,5 +95,15 @@ public class Clase1TMMain {
             candidate ++; // todo esto seguro se puede mejorar si se suma más inteligentemente que de a uno
         }
         return result;
+    }
+
+    public static MenuItem buildMenu(Menu parentMenu) {
+        final Menu menu = new Menu("Turno Mañana", parentMenu);
+        menu.addItem("Ejercicio 1 - Primeros n numeros pares", Clase1TMMain::exercise1);
+        menu.addItem("Ejercicio 2 - Primeros n multiplos de m", Clase1TMMain::exercise2);
+        menu.addItem("Ejercicio 3 - Número primo", Clase1TMMain::exercise3);
+        menu.addItem("Ejercicio 4 - Números primos hasta n", Clase1TMMain::exercise4);
+        menu.addItem("Ejercicio 5 - Primeros n naturales con m digitos d", Clase1TMMain::exercise5);
+        return menu;
     }
 }

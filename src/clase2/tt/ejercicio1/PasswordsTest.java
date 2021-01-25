@@ -27,6 +27,7 @@ class PasswordsTest {
         Password mediumPassword = new MediumPassword();
         assertFalse(mediumPassword.isValid("password"));
         assertFalse(mediumPassword.isValid("1234"));
+        assertFalse(mediumPassword.isValid("p12"));
         assertTrue(mediumPassword.isValid("password1234"));
     }
 

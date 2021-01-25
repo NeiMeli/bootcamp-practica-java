@@ -12,7 +12,6 @@ public abstract class FiguraGeometrica {
     }
 
     public static class FiguraGeometricaException extends RuntimeException {
-
         public FiguraGeometricaException(String message) {
             super(message);
         }

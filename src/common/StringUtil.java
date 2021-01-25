@@ -64,15 +64,15 @@ public class StringUtil {
 
     public static Map<Integer, List<String>> toStringArrayByDigitMap(String[] arr, int digitIndex) {
         final Map<Integer, List<String>> stringArrayByDigitMap = new TreeMap<>(Comparator.comparingInt(i -> i));
-        for (String s : arr) {
+        Arrays.stream(arr).forEach(s -> {
             final int digit = Character.getNumericValue(s.charAt(digitIndex));
             stringArrayByDigitMap.computeIfAbsent(digit, (list) ->  new ArrayList<>()).add(s);
-        }
+        });
         return stringArrayByDigitMap;
     }
 
     public static String[] toSortedByLengthStringArray(int [] arr) {
-        return Arrays.stream(arr).mapToObj(Integer::toString).sorted().toArray(String[]::new);
+        return Arrays.stream(arr).mapToObj(Integer::toString).sorted(Comparator.comparingInt(String::length).reversed()).toArray(String[]::new);
     }
 
     public static String[] fill(String[] unfilledStrings, int finalLength) {

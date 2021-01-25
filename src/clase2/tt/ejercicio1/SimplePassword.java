@@ -1,7 +1,7 @@
 package clase2.tt.ejercicio1;
 
 public class SimplePassword extends Password {
-    // Solo letras
+    // Solo letras, longitud mínima de 1 caracter
     public SimplePassword() {
         super("^[a-zA-Z]+$");
     }
