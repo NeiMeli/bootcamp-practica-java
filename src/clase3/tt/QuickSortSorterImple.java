@@ -22,12 +22,6 @@ public class QuickSortSorterImple<T> implements Sorter<T> {
         return random.nextInt((high - low) + 1) + low;
     }
 
-    private void swap(T[] arr, int index1, int index2) {
-        T aux = arr[index1];
-        arr[index1] = arr[index2];
-        arr[index2] = aux;
-    }
-
     private int partition(T[] arr, int low, int high, Comparator<T> c) {
         swap(arr, low, generateRandomPivot(low, high));
         int index = low + 1;
