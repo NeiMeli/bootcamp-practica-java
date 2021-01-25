@@ -40,6 +40,10 @@ class FraccionTest {
         assertEquals(3.3f, Fraccion.dividir(6.6f, 2));
         // float / float
         assertEquals(2, Fraccion.dividir(6.6f, 3.3f));
+        // división por 0
+        assertThrows(Fraccion.FraccionException.class, () -> Fraccion.dividir(5, 0));
+        // división por negativo
+        assertThrows(Fraccion.FraccionException.class, () -> Fraccion.dividir(5, -3));
     }
 
     @Test

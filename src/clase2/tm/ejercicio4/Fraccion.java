@@ -49,6 +49,7 @@ public class Fraccion {
     }
 
     public static float dividir (float a, float b) {
+        if (b <= 0) throw new FraccionException("No se puede dividir por " + b);
         return MathUtil.roundOneDecimal(a / b);
     }
 
@@ -66,5 +67,11 @@ public class Fraccion {
 
     public static float multiplicar (float a, float b) {
         return MathUtil.roundOneDecimal(a * b);
+    }
+
+    public static class FraccionException extends RuntimeException {
+        public FraccionException(String message) {
+            super(message);
+        }
     }
 }

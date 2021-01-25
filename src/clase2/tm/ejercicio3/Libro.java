@@ -64,7 +64,7 @@ public class Libro {
         return String.format("Titulo: %s - isbn: %s - Autor: %s - Estado: %s", titulo, isbn, autor, getDisponibleAsString());
     }
 
-    private String getDisponibleAsString() {
+    public String getDisponibleAsString() {
         return estaDisponible() ? "Disponible" : "Prestado";
     }
 

@@ -1,5 +1,6 @@
 package common;
 
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.Function;
 
@@ -71,8 +72,8 @@ public class StringUtil {
         return stringArrayByDigitMap;
     }
 
-    public static String[] toSortedByLengthStringArray(int [] arr) {
-        return Arrays.stream(arr).mapToObj(Integer::toString).sorted(Comparator.comparingInt(String::length).reversed()).toArray(String[]::new);
+    public static String[] toStringArray(int [] arr) {
+        return Arrays.stream(arr).mapToObj(Integer::toString).toArray(String[]::new);
     }
 
     public static String[] fill(String[] unfilledStrings, int finalLength) {
@@ -82,5 +83,9 @@ public class StringUtil {
             }
             return s;
         }).toArray(String[]::new);
+    }
+
+    public static int getMaxLenght(String[] arr) {
+        return Arrays.stream(arr).max(Comparator.comparingInt(String::length)).orElse("").length();
     }
 }

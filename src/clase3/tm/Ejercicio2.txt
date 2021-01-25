@@ -1,0 +1,4 @@
+Para modificar el criterio de precedencia entre personas, celulares, o cualquier implementación de Precedable,
+se debe modificar la implementación del método precedeA() de la clase en cuestión. Esto implicaría recompilar y
+deployar el proyecto. Una alternativa sería poder parametrizar la implementación de precedeA() a través de
+inyección de dependencias. Esto permitiría cambiar la lógica del precedeA() en tiempo de ejecución.

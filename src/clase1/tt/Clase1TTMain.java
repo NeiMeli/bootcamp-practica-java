@@ -18,14 +18,14 @@ public class Clase1TTMain {
     }
 
     private static void runExercise() {
-        print("Ingrese números enteros. Para finalizar la carga ingrese 0. Se ordenarán los números de forma tal" +
-                " que todos tendrán la misma cantidad de dígitos (agregando ceros) y se presenten de forma ascendente");
+        final String prompt = "Ingrese números enteros. Para finalizar la carga ingrese 0. Se ordenarán los números de forma tal" +
+                " que todos tendrán la misma cantidad de dígitos (agregando ceros) y se presenten de forma ascendente";
         List<Integer> numbers = Collections.emptyList();
-        int intInput = ensureIntInput();
+        int intInput = ensureIntInput(prompt);
         while (intInput != 0) {
             if (numbers.isEmpty()) numbers = new ArrayList<>();
             numbers.add(intInput);
-            intInput = ensureIntInput();
+            intInput = ensureIntInput(prompt);
         }
         radixSort(numbers.stream().mapToInt(Integer::intValue).toArray());
     }
@@ -38,10 +38,10 @@ public class Clase1TTMain {
     }
 
     public static String[] applyRadixSort(int[] arr) {
-        final String[] sortedByLengthStringArray = StringUtil.toSortedByLengthStringArray(arr);
-        if (sortedByLengthStringArray.length == 0) return sortedByLengthStringArray;
-        int finalLength = sortedByLengthStringArray[0].length();
-        String[] result = StringUtil.fill(sortedByLengthStringArray, finalLength);
+        final String[] stringArray = StringUtil.toStringArray(arr);
+        if (stringArray.length == 0) return stringArray;
+        int finalLength = StringUtil.getMaxLenght(stringArray);
+        String[] result = StringUtil.fill(stringArray, finalLength);
 
         for (int i = finalLength - 1; i >= 0; i --) {
             final Map<Integer, List<String>> stringArrayByDigitMap = StringUtil.toStringArrayByDigitMap(result, i);

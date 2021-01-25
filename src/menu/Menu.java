@@ -19,10 +19,6 @@ public class Menu implements MenuItem {
         this(description, null);
     }
 
-    public Menu (Supplier<String> description) {
-        this(description, null);
-    }
-
     public Menu (String description, @Nullable Menu parentMenu) {
         this (() -> description, parentMenu);
     }
@@ -56,9 +52,9 @@ public class Menu implements MenuItem {
         int option;
         do {
             print(ANSI_BLUE);
-            print(String.format("%s. %s:", getDescription(), "Seleccione una opción"));
+            print(getDescription());
             items.forEach((k, i) -> print(String.format("%s - %s", k, i.getDescription())));
-            option = ensureIntInput(i -> i >= DEFAULT_END_KEY && i < items.size());
+            option = ensureIntInput("Seleccione una opción", i -> i >= DEFAULT_END_KEY && i < items.size());
             print(ANSI_RESET);
             items.get(option).execute();
         } while (!(items.get(option).isFinalAction()));

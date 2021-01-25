@@ -22,8 +22,7 @@ public class Clase1TMMain {
 
     private static void exercise1() {
         print("Ejercicio 1");
-        print("Ingrese un número entero n. Mostraremos los primeros n números pares");
-        int counter = ensureIntInput();
+        int counter = ensureIntInput("Ingrese un número entero n. Mostraremos los primeros n números pares");
         IntStream.range(1, Integer.MAX_VALUE).filter(Clase1TMMain::isEven).limit(counter).forEach(IOUtil::print);
     }
 
@@ -38,15 +37,14 @@ public class Clase1TMMain {
     private static void exercise2() {
         print("Ejercicio 2");
         print("Ingrese dos números n y m. Mostraremos los primeros n múltiplos de m");
-        int n = ensureIntInput();
-        int m = ensureIntInput();
+        int n = ensureIntInput("Ingrese n");
+        int m = ensureIntInput("Ingrese m");
         IntStream.range(1, m).filter(candidate -> areEvenDivisible(m, candidate)).limit(n).forEach(IOUtil::print);
     }
     
     private static void exercise3() {
         print("Ejercicio 3");
-        print("Ingrese un número. Mostraremos si es primo");
-        int n = ensureIntInput();
+        int n = ensureIntInput("Ingrese un número. Mostraremos si es primo");
         print(isPrime(n) ? "Es primo" : "No es primo");
     }
 
@@ -63,17 +61,16 @@ public class Clase1TMMain {
 
     private static void exercise4() {
         print("Ejercicio 4");
-        print("Ingrese un número. Mostraremos todos los números primos en ese rango");
-        int n = ensureIntInput();
+        int n = ensureIntInput("Ingrese un número. Mostraremos todos los números primos en ese rango");
         IntStream.range(1, n).filter(Clase1TMMain::isPrime).forEach(IOUtil::print);
     }
 
     private static void exercise5() {
         print("Ejercicio 5");
         print("Ingrese tres números n, m y d. Mostraremos los primeros n números naturales que tienen al menos m digitios d");
-        int n = ensureIntInput();
-        int m = ensureIntInput();
-        int d = ensureIntInput();
+        int n = ensureIntInput("Ingrese n");
+        int m = ensureIntInput("Ingrese m");
+        int d = ensureIntInput("Ingrese d");
         getFirstNIntegersThatHaveMTimesD(n, m, d).forEach(IOUtil::print);
     }
 

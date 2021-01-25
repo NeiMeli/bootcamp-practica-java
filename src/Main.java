@@ -6,7 +6,7 @@ import menu.Menu;
 import menu.MenuItem;
 
 public class Main {
-    private static final Menu mainMenu = new Menu("Bienvenido a la práctica de Java de bootcamp");
+    private static final Menu mainMenu = new Menu("Práctica JAVA Bootcamp");
     public static void main(String[] args) {
         mainMenu.addItem(buildClase1Menu());
         mainMenu.addItem(buildClase2Menu());
