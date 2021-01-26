@@ -34,6 +34,15 @@ class SorterImplementationsTest {
         Integer[] arr2_2 = sample.clone();
         heapSortSorter.sort(arr2_2, descendingComparator);
         CollectionTestUtil.assertArraysContainSameElements(expectedDescendingResult, arr2_2, equable);
+
+        // BubbleSorter
+        BubbleSortSorterImple<Integer> bubbleSortSorter = new BubbleSortSorterImple<>();
+        Integer[] arr1_3 = sample.clone();
+        bubbleSortSorter.sort(arr1_3, ascendingComparator);
+        CollectionTestUtil.assertArraysContainSameElements(expectedAscendingResult, arr1_3, equable);
+        Integer[] arr2_3 = sample.clone();
+        bubbleSortSorter.sort(arr2_3, descendingComparator);
+        CollectionTestUtil.assertArraysContainSameElements(expectedDescendingResult, arr2_3, equable);
     }
 
     @Test
@@ -62,6 +71,15 @@ class SorterImplementationsTest {
         String[] arr2_2 = sample.clone();
         heapSortSorter.sort(arr2_2, descendingComparator);
         CollectionTestUtil.assertArraysContainSameElements(expectedDescendingResult, arr2_2);
+
+        // BubbleSorter
+        BubbleSortSorterImple<String> bubbleSortSorter = new BubbleSortSorterImple<>();
+        String[] arr1_3 = sample.clone();
+        bubbleSortSorter.sort(arr1_3, ascendingComparator);
+        CollectionTestUtil.assertArraysContainSameElements(expectedAscendingResult, arr1_3);
+        String[] arr2_3 = sample.clone();
+        bubbleSortSorter.sort(arr2_3, descendingComparator);
+        CollectionTestUtil.assertArraysContainSameElements(expectedDescendingResult, arr2_3);
     }
 
     @Test
@@ -112,5 +130,14 @@ class SorterImplementationsTest {
         CuentaCorriente[] arr2_2 = sample.clone();
         heapSortSorter.sort(arr2_2, descendingComparator);
         CollectionTestUtil.assertArraysContainSameElements(expectedDescendingResult, arr2_2, equable);
+
+        // BubbleSorter
+        BubbleSortSorterImple<CuentaCorriente> bubbleSortSorter = new BubbleSortSorterImple<>();
+        CuentaCorriente[] arr1_3 = sample.clone();
+        bubbleSortSorter.sort(arr1_3, ascendingComparator);
+        CollectionTestUtil.assertArraysContainSameElements(expectedAscendingResult, arr1_3, equable);
+        CuentaCorriente[] arr2_3 = sample.clone();
+        bubbleSortSorter.sort(arr2_3, descendingComparator);
+        CollectionTestUtil.assertArraysContainSameElements(expectedDescendingResult, arr2_3, equable);
     }
 }
