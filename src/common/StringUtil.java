@@ -29,12 +29,12 @@ public class StringUtil {
         return ltrim(rtrim(s));
     }
 
-    public static int indexOfN(String s,char c,int n) {
+    public static int getNIndexOfM(String s, char m, int n) {
         char[] chars = s.toCharArray();
         List<Integer> matchingIndexes = Collections.emptyList();
         int index = 0;
         while (index < chars.length && matchingIndexes.size() < n) {
-            if (chars[index] == c) {
+            if (chars[index] == m) {
                 if (matchingIndexes.isEmpty()) matchingIndexes = new ArrayList<>();
                 matchingIndexes.add(index);
             }

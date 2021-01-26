@@ -5,6 +5,7 @@ import clase2.tm.ejercicio2.Contador;
 import clase2.tm.ejercicio3.Libro;
 import clase2.tm.ejercicio4.Fraccion;
 import clase2.tm.ejercicio5.Fecha;
+import common.StringUtil;
 import menu.Menu;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -23,12 +24,12 @@ public class Clase2TMMain {
     
     public static Menu buildMenu(@Nullable Menu parent) {
         final Menu menu = new Menu("Turno Mañana", parent);
-        menu.addItem("Ejercicio 1 - Cuenta corriente", () -> Clase2TMMain.exercise1(menu));
-        menu.addItem("Ejercicio 2 - Contador", () -> Clase2TMMain.exercise2(menu));
-        menu.addItem("Ejercicio 3 - Libro", () -> Clase2TMMain.exercise3(menu));
-        menu.addItem("Ejercicio 4 - Fraccion", () -> Clase2TMMain.exercise4(menu));
-        menu.addItem("Ejercicio 5 - Fecha", () -> Clase2TMMain.exercise5(menu));
-        menu.addItem("Ejercicio 6 - StringUtil 2.0", Clase2TMMain::exercise6);
+        menu.addItem("Ejercicio 1 - Cuenta corriente", () -> Clase2TMMain.exercise1(menu), true);
+        menu.addItem("Ejercicio 2 - Contador", () -> Clase2TMMain.exercise2(menu), true);
+        menu.addItem("Ejercicio 3 - Libro", () -> Clase2TMMain.exercise3(menu), true);
+        menu.addItem("Ejercicio 4 - Fraccion", () -> Clase2TMMain.exercise4(menu), true);
+        menu.addItem("Ejercicio 5 - Fecha", () -> Clase2TMMain.exercise5(menu), true);
+        menu.addItem("Ejercicio 6 - StringUtil 2.0", () -> Clase2TMMain.exercise6(menu), true);
         return menu;
     }
 
@@ -171,7 +172,27 @@ public class Clase2TMMain {
         menu.execute();
     }
 
-    private static void exercise6() {
-
+    private static void exercise6 (@NotNull Menu parent) {
+        final AtomicReference<String> input = new AtomicReference<>(ensureNotEmptyStringInput("Ingrese un texto"));
+        Menu menu = new Menu(() -> String.format("El texto es '%s'. Qué hacemos?", input), parent);
+        menu.addItem("Eliminar espacios a la izquierda", () -> input.set(StringUtil.ltrim(input.get())));
+        menu.addItem("Eliminar espacios a la derecha", () -> input.set(StringUtil.rtrim(input.get())));
+        menu.addItem("Eliminar espacios a izquierda y derecha", () -> input.set(StringUtil.trim(input.get())));
+        menu.addItem("Agregar n caracteres m a la izquierda", () -> {
+            char m = ensureStringInput("Ingrese un caracter", s -> s.length() == 1).toCharArray()[0];
+            int n = ensureIntInput("Ingrese cdad de repeticiones", i -> i > 0);
+            input.set(StringUtil.lpad(input.get(), m, n));
+        });
+        menu.addItem("Agregar n caracteres m a la derecha", () -> {
+            char m = ensureStringInput("Ingrese un caracter", s -> s.length() == 1).toCharArray()[0];
+            int n = ensureIntInput("Ingrese cdad de repeticiones", i -> i > 0);
+            input.set(StringUtil.rpad(input.get(), m, n));
+        });
+        menu.addItem("Obtener la posición de la nº ocurrencia de m", () -> {
+            char m = ensureStringInput("Ingrese un caracter", s -> s.length() == 1).toCharArray()[0];
+            int n = ensureIntInput("Ingrese nº de ocurrencia", i -> i >= 0);
+            print(String.format("La posición de la %sº ocurrencia de %s en %s es %s", n, m, input.get(), StringUtil.getNIndexOfM(input.get(), m, n)));
+        });
+        menu.execute();
     }
 }

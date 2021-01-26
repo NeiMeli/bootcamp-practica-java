@@ -13,11 +13,7 @@ import static common.IOUtil.print;
 
 public class Clase1TMMain {
     public static void main(String[] args) {
-        exercise1();
-        exercise2();
-        exercise3();
-        exercise4();
-        exercise5();
+        buildMenu(null).execute();
     }
 
     private static void exercise1() {

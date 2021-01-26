@@ -30,7 +30,7 @@ public class IOUtil {
         return ensureStringInput(promptMessage, s -> !s.trim().isEmpty());
     }
 
-    private static String ensureStringInput(String promptMessage, Predicate<String> condition) {
+    public static String ensureStringInput(String promptMessage, Predicate<String> condition) {
         return new SafeInput<String>(promptMessage, condition, input::nextLine).ensureInput();
     }
 

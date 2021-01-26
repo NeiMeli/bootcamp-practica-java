@@ -28,9 +28,9 @@ class Clase2TMStringUtilTest {
 
     @Test
     void testIndexOfN() {
-        assertEquals(9, StringUtil.indexOfN("John|Paul|George|Ringo", '|', 2));
-        assertEquals(21, StringUtil.indexOfN("John|Paul|George|Ringo", 'o', 3));
-        assertEquals(1, StringUtil.indexOfN("another-string-example", 'n', 1));
+        assertEquals(9, StringUtil.getNIndexOfM("John|Paul|George|Ringo", '|', 2));
+        assertEquals(21, StringUtil.getNIndexOfM("John|Paul|George|Ringo", 'o', 3));
+        assertEquals(1, StringUtil.getNIndexOfM("another-string-example", 'n', 1));
     }
 
     @Test

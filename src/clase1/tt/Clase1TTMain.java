@@ -51,6 +51,6 @@ public class Clase1TTMain {
     }
 
     public static MenuItem buildMenu(@Nullable Menu menu) {
-        return MenuItem.create("Turno Tarde - Radix Sort", () -> Clase1TTMain.main(new String[]{}), false);
+        return MenuItem.create("Turno Tarde - Radix Sort", Clase1TTMain::runExercise, false);
     }
 }
