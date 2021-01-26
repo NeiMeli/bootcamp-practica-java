@@ -3,7 +3,6 @@ package clase3.tt;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
 
 public class MiFactory {
@@ -12,7 +11,7 @@ public class MiFactory {
         try {
             Class<?> clazz = Class.forName(objName);
             return (Sorter<T>) clazz.getDeclaredConstructor().newInstance();
-        } catch (ClassNotFoundException | NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+        } catch (final Exception e) {
             throw new RuntimeException(e);
         }
     }

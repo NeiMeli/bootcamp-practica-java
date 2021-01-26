@@ -5,6 +5,9 @@ import common.CollectionTestUtil;
 import org.junit.jupiter.api.Test;
 
 import java.util.Comparator;
+import java.util.Random;
+
+import static common.IOUtil.print;
 
 class SorterImplementationsTest {
     @Test
@@ -139,5 +142,46 @@ class SorterImplementationsTest {
         CuentaCorriente[] arr2_3 = sample.clone();
         bubbleSortSorter.sort(arr2_3, descendingComparator);
         CollectionTestUtil.assertArraysContainSameElements(expectedDescendingResult, arr2_3, equable);
+    }
+
+    @Test
+    void testElapsedTime() {
+        // setup
+        // creo un array de 100 mil valores enteros
+        int length = 100000;
+        Integer [] arr = new Integer[length];
+        Random random = new Random();
+        for (int i = 0; i < length; i ++) {
+            arr[i] =  random.nextInt(Integer.MAX_VALUE) + 1;
+        }
+        Comparator<Integer> comparator = Comparator.comparingInt(i -> i);
+        final Timer timer = new Timer();
+
+        // QuickSorter
+        Sorter<Integer> quickSorter = new QuickSortSorterImple<>();
+        timer.start();
+        quickSorter.sort(arr.clone(), comparator);
+        timer.stop();
+        long quickSorterElapsedTime = timer.elapsedTime();
+        print("QuickSorter tardó " + quickSorterElapsedTime + " ms");
+        timer.reset();
+
+        // HeapSorter
+        Sorter<Integer> heapSorter = new HeapSortSorterImple<>();
+        timer.start();
+        heapSorter.sort(arr.clone(), comparator);
+        timer.stop();
+        long heapSorterElapsedTime = timer.elapsedTime();
+        print("HeapSorter tardó " + heapSorterElapsedTime + " ms");
+        timer.reset();
+
+        // BubbleSorter
+        Sorter<Integer> bubbleSorter = new BubbleSortSorterImple<>();
+        timer.start();
+        quickSorter.sort(arr.clone(), comparator);
+        timer.stop();
+        long bubbleSorterElapsedTime = timer.elapsedTime();
+        print("BubbleSorter tardó " + bubbleSorterElapsedTime + " ms");
+        timer.reset();
     }
 }

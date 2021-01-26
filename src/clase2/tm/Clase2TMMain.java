@@ -4,10 +4,12 @@ import clase2.tm.ejercicio1.CuentaCorriente;
 import clase2.tm.ejercicio2.Contador;
 import clase2.tm.ejercicio3.Libro;
 import clase2.tm.ejercicio4.Fraccion;
+import clase2.tm.ejercicio5.Fecha;
 import menu.Menu;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.GregorianCalendar;
 import java.util.Random;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
@@ -25,7 +27,7 @@ public class Clase2TMMain {
         menu.addItem("Ejercicio 2 - Contador", () -> Clase2TMMain.exercise2(menu));
         menu.addItem("Ejercicio 3 - Libro", () -> Clase2TMMain.exercise3(menu));
         menu.addItem("Ejercicio 4 - Fraccion", () -> Clase2TMMain.exercise4(menu));
-        menu.addItem("Ejercicio 5 - Fecha", Clase2TMMain::exercise5);
+        menu.addItem("Ejercicio 5 - Fecha", () -> Clase2TMMain.exercise5(menu));
         menu.addItem("Ejercicio 6 - StringUtil 2.0", Clase2TMMain::exercise6);
         return menu;
     }
@@ -100,7 +102,7 @@ public class Clase2TMMain {
         Menu creationMenu = new Menu("Creemos un Libro");
         AtomicReference<Libro> libroHolder = new AtomicReference<>();
         creationMenu.addItem("Default (sin titulo, sin autor, isbn = 0)", () -> libroHolder.set(new Libro()), true);
-        creationMenu.addItem("Valores ingresados", () -> {
+        creationMenu.addItem("Ingresar valores", () -> {
             String titulo = ensureNotEmptyStringInput("Ingrese el título del libro");
             String autor = ensureNotEmptyStringInput("Ingrese el autor del libro");
 
@@ -147,8 +149,26 @@ public class Clase2TMMain {
         menu.execute();
     }
 
-    private static void exercise5() {
-
+    private static void exercise5(@NotNull Menu parent) {
+        Menu creationMenu = new Menu("Creemos una fecha", parent);
+        AtomicReference<Fecha> fechaHolder = new AtomicReference<>();
+        creationMenu.addItem("Default (fecha actual)", () -> fechaHolder.set(new Fecha()), true);
+        creationMenu.addItem("Ingresar valores", () -> {
+            int dia = ensureIntInput("Ingrese el número de día");
+            int mes = ensureIntInput("Ingrese el número de mes") - 1;
+            int anio = ensureIntInput("Ingrese el año");
+            if (Fecha.esCorrecta(anio, mes, dia)) {
+                fechaHolder.set(new Fecha(new GregorianCalendar(anio, mes, dia).getTime()));
+            } else {
+                print("Valores incorrectos");
+            }
+        }, true);
+        creationMenu.execute();
+        Fecha fecha = fechaHolder.get();
+        if (fecha == null) return;
+        Menu menu = new Menu(() -> String.format("La fecha es %s. Qué hacemos?", fecha.toString()), parent);
+        menu.addItem("Sumar día", fecha::sumarDia);
+        menu.execute();
     }
 
     private static void exercise6() {

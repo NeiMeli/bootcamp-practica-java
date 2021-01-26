@@ -31,10 +31,10 @@ public class Fecha {
         this.fecha = fecha;
     }
 
-    public static boolean esCorrecta(int año, int mes, int dia) {
+    public static boolean esCorrecta(int anio, int mes, int dia) {
         Calendar cal = GregorianCalendar.getInstance();
         cal.setLenient(false);
-        cal.set(año, mes, dia);
+        cal.set(anio, mes, dia);
         try {
             new SimpleDateFormat("dd/MM/yyyy").format(cal.getTime());
             return true;

@@ -1,6 +1,7 @@
 package common;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class MathUtil {
     public static float roundOneDecimal(float value) {
@@ -13,6 +14,6 @@ public class MathUtil {
 
     private static BigDecimal roundOneDecimal(String value) {
         BigDecimal bd = new BigDecimal(value);
-        return bd.setScale(1, BigDecimal.ROUND_HALF_UP);
+        return bd.setScale(1, RoundingMode.HALF_UP);
     }
 }
