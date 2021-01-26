@@ -23,7 +23,7 @@ public class Main {
     private static MenuItem buildClase2Menu() {
         Menu menu = new Menu("Clase 2", mainMenu);
         menu.addItem(Clase2TMMain.buildMenu(menu));
-        menu.addItem(Clase2TTMain.buildMenu());
+        menu.addItem(Clase2TTMain.buildMenu(menu));
         return menu;
     }
 }

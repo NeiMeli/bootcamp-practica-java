@@ -7,7 +7,7 @@ public class SimplePassword extends Password {
     }
 
     @Override
-    protected String getPasswordRules() {
+    public String getPasswordRules() {
         return "Debe contener únicamente letras";
     }
 }

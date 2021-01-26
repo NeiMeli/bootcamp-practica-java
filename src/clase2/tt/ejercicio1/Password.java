@@ -23,7 +23,7 @@ public abstract class Password {
         }
     }
 
-    protected abstract String getPasswordRules();
+    public abstract String getPasswordRules();
 
     public boolean isValid(String value) {
         return value.matches(regex);

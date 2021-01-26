@@ -7,7 +7,7 @@ public class MediumPassword extends Password {
     }
 
     @Override
-    protected String getPasswordRules() {
+    public String getPasswordRules() {
         return "Debe contener letras y números y una longitud minima de cuatro caracteres. No se admiten caracteres especiales";
     }
 }

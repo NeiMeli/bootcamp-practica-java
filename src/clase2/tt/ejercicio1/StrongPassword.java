@@ -6,7 +6,7 @@ public class StrongPassword extends Password {
     }
 
     @Override
-    protected String getPasswordRules() {
+    public String getPasswordRules() {
         return "Debe cotener al menos tres letra en minúscula, dos en mayúscula, dos número, un caracter especial, y una longitud mínima de 8 caracteres.";
     }
 }
