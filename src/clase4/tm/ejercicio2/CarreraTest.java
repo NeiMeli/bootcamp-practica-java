@@ -1,30 +1,11 @@
 package clase4.tm.ejercicio2;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import common.ConsoleOutputTest;
 import org.junit.jupiter.api.Test;
-
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CarreraTest {
-    private final PrintStream standardOut = System.out;
-    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
-
-    @BeforeEach
-    public void setUp() {
-        System.setOut(new PrintStream(outputStreamCaptor));
-    }
-
-    @AfterEach
-    public void tearDown() {
-        System.setOut(standardOut);
-    }
-
+class CarreraTest extends ConsoleOutputTest {
     @Test
     void testCarreraComplete() {
         final Carrera carrera = new Carrera(100, 950000, "Casi un palo", 4);
@@ -44,9 +25,8 @@ class CarreraTest {
         carrera.socorrerAuto("AUTO-1");
         carrera.socorrerMoto("MOTO-1");
 
-        String sysout = outputStreamCaptor.toString();
-        assertTrue(sysout.contains("Socorriendo auto AUTO-1"));
-        assertTrue(sysout.contains("Socorriendo moto MOTO-1"));
+        assertConsoleOutput("Socorriendo auto AUTO-1");
+        assertConsoleOutput("Socorriendo moto MOTO-1");
 
         // ganador
         assertTrue(carrera.getGanador().tienePatente("MOTO-1"));
