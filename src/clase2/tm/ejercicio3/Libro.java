@@ -1,5 +1,6 @@
 package clase2.tm.ejercicio3;
 
+@SuppressWarnings("unused") // aunque no se usen los setters y getters, lo pide la consigna
 public class Libro {
 
     private String titulo;

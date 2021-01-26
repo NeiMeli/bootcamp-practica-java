@@ -1,6 +1,5 @@
 package clase3.tm;
 
-import common.CollectionTestUtil;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -9,6 +8,7 @@ import java.util.List;
 import static clase3.tm.SortUtil.ordenar;
 import static common.CollectionTestUtil.assertListsContainSameElements;
 
+@SuppressWarnings("unchecked")
 class SortUtilTest {
 
     @Test

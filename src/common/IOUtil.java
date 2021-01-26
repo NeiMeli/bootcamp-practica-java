@@ -22,10 +22,6 @@ public class IOUtil {
         return new SafeInput<Integer>(promptMessage, condition, () -> Integer.parseInt(input.nextLine())).ensureInput();
     }
 
-    public static String ensureStringInput(@NotNull String promptMessage) {
-        return ensureStringInput(promptMessage, s -> true);
-    }
-
     public static String ensureNotEmptyStringInput(@NotNull String promptMessage) {
         return ensureStringInput(promptMessage, s -> !s.trim().isEmpty());
     }

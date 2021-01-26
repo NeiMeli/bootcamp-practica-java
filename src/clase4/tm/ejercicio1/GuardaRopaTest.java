@@ -23,7 +23,7 @@ class GuardaRopaTest {
         final Prenda hutGorra = new Prenda("Hut", "Gorra");
 
         // guardar ropa
-        Integer num1 = guardaRopa.guardarPrendas(Arrays.asList(nike5000));
+        Integer num1 = guardaRopa.guardarPrendas(Collections.singletonList(nike5000));
         assertEquals(contadorInicial + 1, num1);
         Integer num2 = guardaRopa.guardarPrendas(Arrays.asList(tommyTiJirt, gapBuso));
         assertEquals(num1 + 1, num2);
@@ -41,7 +41,7 @@ class GuardaRopaTest {
 
         // Devolver prendas, deberían salir del mapa
         List<Prenda> prendas = guardaRopa.devolverPrendas(num1);
-        CollectionTestUtil.assertListsContainSameElements(prendas, Arrays.asList(nike5000));
+        CollectionTestUtil.assertListsContainSameElements(prendas, Collections.singletonList(nike5000));
         assertEquals(2, guardaRopa.getPrendas().size());
         List<Prenda> prendas2 = guardaRopa.devolverPrendas(num2);
         CollectionTestUtil.assertListsContainSameElements(prendas2, Arrays.asList(tommyTiJirt, gapBuso));

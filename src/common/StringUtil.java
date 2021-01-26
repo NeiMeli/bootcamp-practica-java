@@ -1,10 +1,8 @@
 package common;
 
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.Function;
 
-// Volví a armar la clase con los métodos solicitados
 public class StringUtil {
 
     private static final char BLANK = ' ';

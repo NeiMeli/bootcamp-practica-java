@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class SortUtil {
     public static <T> List<T> ordenar (Precedable<T>[] arr) {
         return Arrays.stream(arr).sorted((p1, p2) -> p1.precedeA((T) p2)).map(p -> (T) p).collect(Collectors.toList());

@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Evento {
-    private List<Invitado> invitados;
-    private List<Explotable> explotables;
+    private final List<Invitado> invitados;
+    private final List<Explotable> explotables;
 
     public Evento(List<Invitado> invitados, List<Explotable> explotables) {
         this.invitados = invitados;

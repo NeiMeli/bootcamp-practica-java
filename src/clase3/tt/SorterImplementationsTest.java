@@ -14,7 +14,7 @@ class SorterImplementationsTest {
     void testSortIntegers() {
         // setup
         Integer[] sample = {5, 98, 23, 7, 233, 32, 3, 90, 14, 76};
-        Comparator<Integer> ascendingComparator = (i1, i2) -> i1 - i2;
+        Comparator<Integer> ascendingComparator = Comparator.comparingInt(i -> i);
         Comparator<Integer> descendingComparator = (i1, i2) -> i2 - i1;
         Integer[] expectedAscendingResult = {3, 5, 7, 14, 23, 32, 76, 90, 98, 233};
         Integer[] expectedDescendingResult = {233, 98, 90, 76, 32, 23, 14, 7, 5, 3};
@@ -52,7 +52,7 @@ class SorterImplementationsTest {
     void testSortStrings() {
         // setup
         String[] sample = {"Pedro", "Eugenia", "Acasio", "Ana", "Francisco", "Luis"};
-        Comparator<String> ascendingComparator = (i1, i2) -> i1.length() - i2.length();
+        Comparator<String> ascendingComparator = Comparator.comparingInt(String::length);
         Comparator<String> descendingComparator = (i1, i2) -> i2.length() - i1.length();
         String[] expectedAscendingResult = {"Ana", "Luis", "Pedro", "Acasio", "Eugenia", "Francisco"};
         String[] expectedDescendingResult = {"Francisco", "Eugenia", "Acasio", "Pedro", "Luis", "Ana"};
@@ -175,10 +175,10 @@ class SorterImplementationsTest {
         print("HeapSorter tardó " + heapSorterElapsedTime + " ms");
         timer.reset();
 
-        // BubbleSorter
+        // BubbleSorter - Tarda un montonazo!!!!!!
         Sorter<Integer> bubbleSorter = new BubbleSortSorterImple<>();
         timer.start();
-        quickSorter.sort(arr.clone(), comparator);
+        bubbleSorter.sort(arr.clone(), comparator);
         timer.stop();
         long bubbleSorterElapsedTime = timer.elapsedTime();
         print("BubbleSorter tardó " + bubbleSorterElapsedTime + " ms");

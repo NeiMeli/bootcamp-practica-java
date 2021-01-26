@@ -1,5 +1,6 @@
 package clase3.tm;
 
+@SuppressWarnings("unused")
 public class Celular implements Precedable<Celular> {
     private int numero;
     private String titular;

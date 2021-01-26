@@ -2,9 +2,7 @@ package clase1.tt;
 
 import common.IOUtil;
 import common.StringUtil;
-import menu.Menu;
 import menu.MenuItem;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -50,7 +48,7 @@ public class Clase1TTMain {
         return result;
     }
 
-    public static MenuItem buildMenu(@Nullable Menu menu) {
+    public static MenuItem buildMenu() {
         return MenuItem.create("Turno Tarde - Radix Sort", Clase1TTMain::runExercise, false);
     }
 }

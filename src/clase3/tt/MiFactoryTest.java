@@ -22,7 +22,7 @@ public class MiFactoryTest {
         assertEquals(BubbleSortSorterImple.class, bubbleSorter.getClass());
 
         Integer[] sample = {5, 98, 23, 7, 233, 32, 3, 90, 14, 76};
-        Comparator<Integer> ascendingComparator = (i1, i2) -> i1 - i2;
+        Comparator<Integer> ascendingComparator = Comparator.comparingInt(i -> i);
         CollectionTestUtil.Equable<Integer> equable = (t1, t2) -> t1.intValue() == t2.intValue();
         Integer[] expectedAscendingResult = {3, 5, 7, 14, 23, 32, 76, 90, 98, 233};
 
